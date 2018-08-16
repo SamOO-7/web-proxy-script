@@ -35,7 +35,7 @@ function makeRequest($url) {
     $user_agent = "Mozilla/5.0 (compatible; nrird.xyz/proxy)";
   }
   $ch = curl_init();
-  curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
+  curl_setopt($ch, CURLOPT_USERAGENT, $user_agent); 
 
   //Proxy the browser's request headers.
   $browserRequestHeaders = getallheaders();
