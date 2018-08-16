@@ -164,204 +164,46 @@ function recordLog($url) {
 
 $proxy_prefix = PROXY_PREFIX;
 $htmlcode = <<<ENDHTML
+
+<!--HTML GOES HERE-->
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.85">
     <title>WEB PROXY</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0
-        }
-
-        body {
-            background: #f3f3f3;
-            font: 400 16px sans-serif;
-            color: #555
-        }
-
-        nav {
-            max-width: 800px;
-            margin: 80px auto 60px;
-            text-align: center;
-            font-size: 18px;
-            color: silver
-        }
-
-        nav a {
-            display: inline-block;
-            margin: 0 14px;
-            text-decoration: none;
-            color: #6e6e6e;
-            font-weight: 700;
-            font-size: 16px
-        }
-
-        nav a.active {
-            color: #6CAEE0
-        }
-
-        form {
-            box-sizing: border-box;
-            width: 100%;
-            max-width: 500px;
-			min-width: 350px;
-            margin: 50px auto;
-            padding: 55px;
-            background-color: #fff;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1);
-            font: 400 14px sans-serif;
-            text-align: center
-        }
-
-        form .form-row {
-            text-align: left;
-        }
-
-        form .form-title-row {
-            margin: 0 auto 40px auto;
-			text-align: left;
-        }
-
-        form h1 {
-            display: block;
-            box-sizing: border-box;
-            color: #4C565E;
-            font-size: 24px;
-            padding: 0 0 3px;
-            margin: 0;
-            border-bottom: 2px solid #6CAEE0
-        }
-
-        form .form-row>label span {
-            display: block;
-            box-sizing: border-box;
-            color: #5f5f5f;
-            padding: 0 0 10px;
-            font-weight: 700
-        }
-
-        form input {
-            color: #5f5f5f;
-            box-sizing: border-box;
-            box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, .08);
-            padding: 12px 18px;
-            border: 1px solid #dbdbdb;
-			margin-bottom: 10px;
-        }
-
-        form input[type=email],
-        form input[type=password],
-        form input[type=text],
-        form textarea {
-            width: 100%
-        }
-
-        form input[type=number] {
-            max-width: 100px
-        }
-
-        form input[type=checkbox],
-        form input[type=radio] {
-            box-shadow: none;
-            width: auto
-        }
-
-        form textarea {
-            color: #5f5f5f;
-            box-sizing: border-box;
-            box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, .08);
-            padding: 12px 18px;
-            border: 1px solid #dbdbdb;
-            resize: none;
-            min-height: 80px;
-        }
-
-        form select {
-            background-color: #fff;
-            color: #5f5f5f;
-            box-sizing: border-box;
-            width: 240px;
-            box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, .08);
-            padding: 12px 18px;
-            border: 1px solid #dbdbdb
-        }
-
-        form .form-radio-buttons>div {
-            margin-bottom: 10px
-        }
-
-        form .form-radio-buttons label span {
-            margin-left: 8px;
-            color: #5f5f5f
-        }
-
-        form .form-radio-buttons input {
-            width: auto
-        }
-
-        form button {
-            border-radius: 2px;
-            background-color: #6caee0;
-            color: #fff;
-            font-weight: 700;
-            box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, .08);
-            padding: 14px 22px;
-            border: 0;
-			margin-top: 10px;
-			cursor: pointer;
-        }
-
-        p.explanation {
-            padding: 15px 20px;
-            line-height: 1.5;
-            background-color: #FFFFE0;
-            font-size: 13px;
-            text-align: center;
-            margin-top: 40px;
-            color: #6B6B48;
-            border-radius: 3px;
-            border-bottom: 2px solid #ECECD0;
-			border-right: 2px solid #ECECD0;
-            text-align: left
-        }
-
-        @media (max-width:600px) {
-            form {
-                padding: 30px
-            }
-			body {
-				background: #fff;
-			}
-			form {
-				box-shadow: none;
-			}
-        }
-    </style>
+	<link href="index.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
-
 <body>
     <form onsubmit="window.location.href='$proxy_prefix' + document.getElementById('site').value; return false;">
-        <div class="form-title-row">
-            <h1>WEB PROXY</h1>
+		<div class="header">
+            <h2 class="h1">WEB PROXY</h2>
+			<h2 class="h2">WEB PROXY</h2>
         </div>
         <div class="form-row">
             <label>
-		<span>Enter full URL:</span>
-		<input type="text" id="site" placeholder="http://www.google.com" required>
+		<span id="c">Enter full URL:</span>
+		<input type="text" id="site" placeholder="https://www.google.com" required>
 		</label>
         </div>
         <div class="form-row">
-            <button type="submit">Proxify</button>
+			<button type="submit" id="myButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+				Proxy It !
+			</button>
         </div>
-        <p class="explanation"><strong>DISCLAIMER:</strong><br/>Use this proxy at your own risk!</p>
+		<div class="explanation">
+			<strong>DISCLAIMER:</strong><br/>
+			<p>a.请勿使用此 Web Proxy 来浏览 Youtube.<br />b.本 Web Proxy 可完美代理 Pornhub.<br />c.请勿滥用！<br />d.如果你想支持本站 --><a href="https://softsoc.net/sup" target="_blank">SUPPORT US </a></p>
+		</div>
+		<br /><br />
+		<span>Source Code: <a href="https://github.com/heiswayi/web-proxy-script" target="_blank">GITHUB</a> | Modified by <a href="https://softsoc.net">SOFTSOC.NET</a></span>
     </form>
 </body>
-
 </html>
 ENDHTML;
 
